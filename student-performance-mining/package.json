@@ -1,0 +1,17 @@
+{
+  "name": "student-performance-mining",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Student Performance Analytics - Data Mining & Machine Learning Dashboard",
+  "scripts": {
+    "setup": "npm --prefix frontend install",
+    "dataset": "python scripts/generate_dataset.py",
+    "backend": "python backend/app.py",
+    "frontend": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "dev": "concurrently -n api,web -c cyan,magenta \"npm run backend\" \"npm run frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}

@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: student-performance-mining
+    runtime: python
+    buildCommand: pip install -r requirements.txt && pip install --upgrade "setuptools<81" && cd frontend && npm ci && npm run build
+    startCommand: gunicorn backend.app:app --bind 0.0.0.0:$PORT

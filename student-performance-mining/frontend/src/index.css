@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply bg-paper font-sans text-ink antialiased; font-variant-numeric: tabular-nums; }
+  h1, h2, h3 { @apply font-display; letter-spacing: -0.01em; }
+  :focus-visible { outline: 2px solid #2F4BD0; outline-offset: 2px; }
+}
+
+@layer components {
+  .panel { @apply rounded-card border border-line bg-white; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn bg-cobalt text-white hover:bg-cobalt-dark; }
+  .btn-ghost { @apply btn border border-line bg-white text-ink hover:bg-paper; }
+  .input { @apply w-full rounded-md border border-line bg-white px-3 py-2 text-sm placeholder:text-muted/70 focus:border-cobalt focus:outline-none; }
+  .th { @apply whitespace-nowrap border-b border-line bg-paper px-3 py-2 text-left text-xs font-semibold text-muted; }
+  .td { @apply whitespace-nowrap border-b border-line/60 px-3 py-2 text-sm; }
+}
+
+/* one deliberate motion: the class-distribution bar grows in on load */
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.grow-in { transform-origin: left; animation: grow .9s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes indeterminate { 0% { left: -40%; } 100% { left: 100%; } }
+.indeterminate { position: absolute; width: 40%; animation: indeterminate 1.1s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .grow-in, .indeterminate { animation: none; } .indeterminate { width: 100%; left: 0; } }
